@@ -1,0 +1,16 @@
+Hello! I need you to write a fuzzing harness. The target codebase is written in C++, so the harness should be in a .cpp file.
+
+The harness should target a specific function in that codebase. I will give you the function's source code, as well as the repository location for reference. The harness must follow libFuzzer conventions, meaning it should define a function of the form:
+int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size)
+
+Please follow these rules when writing the harness:
+1) Do not include `extern "C"` in the code.  
+2) Only provide the code wrapped in <code>...</code> tags.  
+3) Do not output any additional text outside those code tags.  
+4) Handle any string inputs in a way that ensures they are null-terminated if the target function expects C-string style usage.  
+5) Include the necessary header files using the full paths I provide.  
+6) Keep the harness as simple as possible so that it compiles easily.  
+7) Make sure the fuzz input data (the bytes from `(data, size)`) is actually used by the target function so the fuzzer can explore relevant code paths.
+
+When writing a given fuzzing harness, you may wish to search for and use related materials. 
+Below is a sample fuzzer code that I suggest:```
